@@ -55,8 +55,21 @@ const pAequorFactory = (dnaID= 0, dnaArray=[]) => {
       return `specimen 1 and specimen 2 have ${percent}% in common. Where: ${different}`;
     },
 
-    willLikelySurvive() {
+     willLikelySurvive() {
+      const myDna = this.dna;
+      let survive = 0;
 
+      for (i = 0; i < 15; i++) {
+        myDna[i] === 'C' || myDna[i] === 'G' ? survive++ : false;
+      } 
+      survive = survive/15 * 100;
+
+      if (survive >= 60) {
+        return true;
+
+      } else {
+        return false;
+      }
     }
   };
   return strandCollection;
@@ -66,4 +79,5 @@ dna1 = pAequorFactory(1, mockUpStrand());
 dna2 = pAequorFactory(2, mockUpStrand());
 console.log(dna1.dna);
 console.log(dna2.dna);
-console.log(dna1.compareDNA(dna2))
+console.log(dna1.compareDNA(dna2));
+console.log(dna1.willLikelySurvive());
