@@ -16,7 +16,7 @@ const mockUpStrand = () => {
 // this function will creat multiple objects making it a factory
 const pAequorFactory = (dnaID= 0, dnaArray=[]) => {
   const strandCollection = { 
-    //Propertie s
+    //Properties
     spaciemenNum: dnaID,
     dna: dnaArray,
 
@@ -75,9 +75,7 @@ const pAequorFactory = (dnaID= 0, dnaArray=[]) => {
   return strandCollection;
 }
 
-dna1 = pAequorFactory(1, mockUpStrand());
-dna2 = pAequorFactory(2, mockUpStrand());
-console.log(dna1.dna);
-console.log(dna2.dna);
-console.log(dna1.compareDNA(dna2));
-console.log(dna1.willLikelySurvive());
+let pAequor = [];
+for (i = 1; i <= 30; i++) {
+  pAequor.push(pAequorFactory(i, mockUpStrand()))
+}
