@@ -16,7 +16,7 @@ const mockUpStrand = () => {
 // this function will creat multiple objects making it a factory
 const pAequorFactory = (dnaID= 0, dnaArray=[]) => {
   const strandCollection = { 
-    //Properties
+    //Propertie s
     spaciemenNum: dnaID,
     dna: dnaArray,
 
@@ -36,15 +36,34 @@ const pAequorFactory = (dnaID= 0, dnaArray=[]) => {
 
       } while (tempDNA[index] !== newBase); // when true it loops around
       this.dna = tempDNA; //reassign the copy to the origin
+    },
+
+    compareDNA(pAequor) {
+      const myDna = this.dna;
+      let different = [];
+      /* Something wrong with this algorithm
+      let pos = 0;
+      myDna.every((x) => {
+        x === pAequor.dna[pos] ? different.push(`In position ${pos}: ${x} `) : false;
+        pos = pos++;
+        console.log(different)
+      });*/
+      for (i = 0; i < 15; i++) {
+        myDna[i] === pAequor.dna[i] ? different.push(`\nIn position ${i}: ${myDna[i]}`) : false;
+      }
+      const percent = different.length/15 * 100;
+      return `specimen 1 and specimen 2 have ${percent}% in common. Where: ${different}`;
+    },
+
+    willLikelySurvive() {
+
     }
-
-    compare
   };
-
   return strandCollection;
 }
 
-dna = pAequorFactory(1, mockUpStrand());
-console.log(dna.dna)
-dna.mutate()
-console.log(dna.dna)
+dna1 = pAequorFactory(1, mockUpStrand());
+dna2 = pAequorFactory(2, mockUpStrand());
+console.log(dna1.dna);
+console.log(dna2.dna);
+console.log(dna1.compareDNA(dna2))
