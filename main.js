@@ -74,8 +74,32 @@ const pAequorFactory = (dnaID= 0, dnaArray=[]) => {
   };
   return strandCollection;
 }
+/*
+dna1 = pAequorFactory(100, mockUpStrand());
+dna2 = pAequorFactory(101, mockUpStrand());
+console.log(dna1.dna);
+console.log(dna2.dna);
+console.log(dna1.compareDNA(dna2));
+console.log(dna1.willLikelySurvive());
+*/
 
-let pAequor = [];
+  //something went wrong with alogorithm
+/*let pAequor = [];
+let test = {};
 for (i = 1; i <= 30; i++) {
-  pAequor.push(pAequorFactory(i, mockUpStrand()))
+  do {
+    test = pAequorFactory(i, mockUpStrand());
+  } while (test.willLikelySurvive())
+  console.log(test);
+  pAequor.push(test);
+}*/
+
+let batch = [];
+let idCounter = 1;
+while(batch.length < 30){
+  let tempPAequor = pAequorFactory(idCounter, mockUpStrand());
+  if(tempPAequor.willLikelySurvive())
+    batch.push(tempPAequor);
+  idCounter++;
+  console.log(idCounter)
 }
